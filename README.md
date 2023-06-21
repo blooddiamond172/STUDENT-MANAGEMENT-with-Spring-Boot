@@ -1,5 +1,5 @@
 # Student-Management
-This project help better understanding about Spring Boot flow architecture and creating APIs for a simple web application.
+This project helps to better understand about Spring Boot flow architecture and create APIs for a simple web application.
 
 ## Technologies
 + Java 8
