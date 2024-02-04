@@ -1,6 +1,7 @@
 package com.example.crud_app.service;
 
 import com.example.crud_app.model.Student;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

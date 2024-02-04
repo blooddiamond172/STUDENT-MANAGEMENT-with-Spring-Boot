@@ -10,49 +10,39 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
-
 @Controller
 public class StudentController {
     @Autowired
     private StudentServiceImp studentServiceImp;
 
     @GetMapping("/")
-    public String getString(Model model) {
-
-        model.addAttribute("listStudents", studentServiceImp.getAllStudents());
+    public String getStudentList(Model model) {
+        model.addAttribute("studentList", studentServiceImp.getAllStudents());
         return "index";
     }
 
     @GetMapping("/showNewStudentForm")
     public String showNewStudentForm(Model model) {
-        Student student = new Student();
-
-        model.addAttribute("student", student);
+        model.addAttribute("student", new Student());
         return "new_student";
     }
 
     @PostMapping("/saveStudent")
     public String saveStudent(@ModelAttribute("student") Student student) {
-
         studentServiceImp.saveStudent(student);
         return "redirect:/";
     }
 
     @GetMapping("/showFormForUpdate/{id}")
-    public String showFormForUpdate(@PathVariable(value = "id") Long id, Model model) {
-        Student student = null;
-
-        student = studentServiceImp.getStudentById(id);
-        model.addAttribute("student", student);
+    public String showFormForUpdate(@PathVariable(value = "id") Long id,
+                                    Model model) {
+        model.addAttribute("student", studentServiceImp.getStudentById(id));
         return "update_student";
     }
 
     @GetMapping("/deleteStudent/{id}")
     public String deleteStudentById(@PathVariable(value = "id") Long id) {
-
         studentServiceImp.deleteStudent(id);
         return "redirect:/";
     }
-
 }

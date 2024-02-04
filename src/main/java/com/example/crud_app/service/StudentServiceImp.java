@@ -26,8 +26,7 @@ public class StudentServiceImp implements StudentService {
     @Override
     public Student getStudentById(Long id) {
         Optional<Student> studentById = studentRepository.findById(id);
-
-        Student student = null;
+        Student student;
 
         if (studentById.isPresent()) {
             student = studentById.get();
@@ -41,5 +40,4 @@ public class StudentServiceImp implements StudentService {
     public void deleteStudent(Long id) {
         studentRepository.deleteById(id);
     }
-
 }
